@@ -42,9 +42,11 @@ const Nav = () => {
             onClick={toggleSidebar}
             className="cursor-pointer"
           />
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
         </div>
       </nav>
-      <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
+      
+      
       {/* 
       <div
         className={`fixed top-0 right-0 h-full bg-white shadow-lg z-20 transform transition-transform duration-300 ${
