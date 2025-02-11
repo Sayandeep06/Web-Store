@@ -3,22 +3,25 @@ import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants';
 import Sidebar from './Sidebar';
+
 const Nav = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <header className="padding-x py-8 absolute z-10 w-full">
+    <header className="padding-x py-4 absolute z-10 w-full bg-black/80">
       <nav className="flex w-full justify-between items-center max-container">
-        <a href="/">
+        <a href="/" className="hover:opacity-70 transition-opacity">
           <img
             src={headerLogo}
             alt="Logo"
-            width={130}
-            height={29}
+            width={120}
+            height={25}
+            className="object-contain brightness-0 invert"
           />
         </a>
         <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
@@ -26,7 +29,14 @@ const Nav = () => {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="font-montserrat font-semibold leading-normal text-lg text-slate-800"
+                className={`font-montserrat leading-normal text-base relative
+                  text-white/90 hover:text-white transition-colors duration-300
+                  after:content-[''] after:absolute after:w-0 after:h-[2px] 
+                  after:bg-white after:left-0 after:-bottom-2 
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                  ${activeLink === item.label ? 'text-white after:w-full' : ''}`}
+                onClick={() => setActiveLink(item.label)}
               >
                 {item.label}
               </a>
@@ -37,10 +47,10 @@ const Nav = () => {
           <img
             src={hamburger}
             alt="Hamburger"
-            width={25}
-            height={25}
+            width={22}
+            height={22}
             onClick={toggleSidebar}
-            className="cursor-pointer"
+            className="cursor-pointer hover:opacity-70 transition-opacity brightness-0 invert"
           />
           <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
         </div>

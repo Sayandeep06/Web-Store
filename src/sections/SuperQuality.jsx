@@ -7,7 +7,7 @@ const SuperQuality = () => {
 
         <h2 className='mt-10 font-palanquin text-4xl capitalize font-bold lg:max-w-lg'>
             We provide you
-            <span className='text-coral-red inline-block mt-3'>Premium Quality</span> Shoes
+            <span className='text-slate-gray inline-block mt-3'>Premium Quality</span> Shoes
         </h2>
         <p className='mt-4 lg:max-w-lg info-text'>
             We deliver premium-quality shoes crafted with precision, blending comfort, style, and durability. Our focus on excellence ensures unmatched value, catering to diverse needs with top-grade materials and innovative designs.

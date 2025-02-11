@@ -11,7 +11,7 @@ const SpecialOffer = () => {
 
         <h2 className='mt-10 font-palanquin text-4xl capitalize font-bold lg:max-w-lg'>
             <span>New </span>
-            <span className='text-coral-red inline-block mt-3'>Special</span> Offers
+            <span className='text-slate-gray inline-block mt-3'>Special</span> Offers
         </h2>
         <p className='mt-4 lg:max-w-lg info-text'>
           Discover unbeatable deals on our exclusive shoe collection! Enjoy limited-time discounts on trendy, comfortable footwear designed to elevate your style and performance. Shop now!
