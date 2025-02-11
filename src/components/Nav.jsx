@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants';
@@ -10,10 +10,19 @@ const Nav = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+    // Prevent scrolling when sidebar is open
+    document.body.style.overflow = isSidebarOpen ? 'auto' : 'hidden';
   };
 
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
-    <header className="padding-x py-4 absolute z-10 w-full bg-black/80">
+    <header className="padding-x py-4 absolute z-10 w-full bg-[#1D1D1F]/95 backdrop-blur-sm">
       <nav className="flex w-full justify-between items-center max-container">
         <a href="/" className="hover:opacity-70 transition-opacity">
           <img
@@ -30,7 +39,7 @@ const Nav = () => {
               <a
                 href={item.href}
                 className={`font-montserrat leading-normal text-base relative
-                  text-white/90 hover:text-white transition-colors duration-300
+                  text-gray-200 hover:text-white transition-colors duration-300
                   after:content-[''] after:absolute after:w-0 after:h-[2px] 
                   after:bg-white after:left-0 after:-bottom-2 
                   after:transition-all after:duration-300
@@ -44,15 +53,19 @@ const Nav = () => {
           ))}
         </ul>
         <div className="hidden max-lg:block">
-          <img
-            src={hamburger}
-            alt="Hamburger"
-            width={22}
-            height={22}
+          <button
             onClick={toggleSidebar}
-            className="cursor-pointer hover:opacity-70 transition-opacity brightness-0 invert"
-          />
-          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <img
+              src={hamburger}
+              alt="Menu"
+              width={24}
+              height={24}
+              className="brightness-0 invert"
+            />
+          </button>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </div>
       </nav>
       
